@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Register</h2>
+<form action="register" method="post">
+    <input name="username" placeholder="Username"/><br><br>
+    <input name="password" type="password" placeholder="Password"/><br><br>
+    <button type="submit">Register</button>
+</form>
+</body>
+</html>

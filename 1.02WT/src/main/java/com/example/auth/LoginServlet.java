@@ -1,5 +1,7 @@
 package com.example.auth;
 
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,7 +13,7 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String user = req.getParameter("username");
         String pass = req.getParameter("password");
 
@@ -26,7 +28,10 @@ public class LoginServlet extends HttpServlet {
             resp.sendRedirect(contextPath + "/profile.jsp");
 
         } else {
-            resp.getWriter().println("Invalid username or password!");
+            // Forward back to login with error message
+            req.setAttribute("error", "Wrong username or password. Please try again.");
+            RequestDispatcher rd = req.getRequestDispatcher("login.jsp");
+            rd.forward(req, resp);
         }
     }
 }

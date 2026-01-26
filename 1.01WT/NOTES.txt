@@ -1,2 +1,0 @@
-1. Installed Tomcat 11
-2. built a simple register login system , with temporary session
